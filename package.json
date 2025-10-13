@@ -9,7 +9,7 @@
         "email": "ali.shahkochaki7@gmail.com"
     },
     "license": "MIT",
-    "icon": "src/logo.jpg",
+    "icon": "logo.jpg",
     "galleryBanner": {
         "color": "#1e1e1e",
         "theme": "dark"
