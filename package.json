@@ -16,12 +16,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/multi-language-lorem.git"
+        "url": "https://github.com/shahkochaki/multi-language-lorem-with-categories.git"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/multi-language-lorem/issues"
+        "url": "https://github.com/shahkochaki/multi-language-lorem-with-categories/issues"
     },
-    "homepage": "https://github.com/yourusername/multi-language-lorem#readme",
+    "homepage": "https://github.com/shahkochaki/multi-language-lorem-with-categories#readme",
     "keywords": [
         "lorem",
         "ipsum",
