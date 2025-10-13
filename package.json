@@ -1,0 +1,124 @@
+{
+    "name": "multi-language-lorem-with-categories",
+    "displayName": "Multi-Language Lorem Ipsum Generator With Categories",
+    "description": "Generate contextual placeholder text in 9 languages (English, Persian, Arabic, Chinese, Japanese, Russian, Spanish, French, German) with 6 topic-based categories. Perfect for multilingual projects and realistic mockups.",
+    "version": "1.0.1",
+    "publisher": "shahkochaki",
+    "author": {
+        "name": "Ali Shahkochaki",
+        "email": "ali.shahkochaki7@gmail.com"
+    },
+    "license": "MIT",
+    "icon": "src/logo.jpg",
+    "galleryBanner": {
+        "color": "#1e1e1e",
+        "theme": "dark"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/multi-language-lorem.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/multi-language-lorem/issues"
+    },
+    "homepage": "https://github.com/yourusername/multi-language-lorem#readme",
+    "keywords": [
+        "lorem",
+        "ipsum",
+        "placeholder",
+        "text",
+        "generator",
+        "multi-language",
+        "multilingual",
+        "persian",
+        "arabic",
+        "chinese",
+        "japanese",
+        "russian",
+        "spanish",
+        "french",
+        "german",
+        "tourism",
+        "medical",
+        "technology",
+        "business",
+        "education",
+        "food",
+        "mockup",
+        "dummy text",
+        "fake text"
+    ],
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other",
+        "Snippets",
+        "Formatters"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "lorem.generateEnglish",
+                "title": "Lorem: Generate English Text"
+            },
+            {
+                "command": "lorem.generatePersian",
+                "title": "Lorem: Generate Persian Text (فارسی)"
+            },
+            {
+                "command": "lorem.generateArabic",
+                "title": "Lorem: Generate Arabic Text (العربية)"
+            },
+            {
+                "command": "lorem.generateChinese",
+                "title": "Lorem: Generate Chinese Text (中文)"
+            },
+            {
+                "command": "lorem.generateJapanese",
+                "title": "Lorem: Generate Japanese Text (日本語)"
+            },
+            {
+                "command": "lorem.generateRussian",
+                "title": "Lorem: Generate Russian Text (Русский)"
+            },
+            {
+                "command": "lorem.generateSpanish",
+                "title": "Lorem: Generate Spanish Text (Español)"
+            },
+            {
+                "command": "lorem.generateFrench",
+                "title": "Lorem: Generate French Text (Français)"
+            },
+            {
+                "command": "lorem.generateGerman",
+                "title": "Lorem: Generate German Text (Deutsch)"
+            },
+            {
+                "command": "lorem.generateCustom",
+                "title": "Lorem: Generate Custom Text (Choose Language & Category)"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.85.0",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@typescript-eslint/eslint-plugin": "^6.15.0",
+        "@typescript-eslint/parser": "^6.15.0",
+        "eslint": "^8.56.0",
+        "typescript": "^5.3.3",
+        "@vscode/test-cli": "^0.0.4",
+        "@vscode/test-electron": "^2.3.8"
+    }
+}
