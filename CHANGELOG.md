@@ -9,11 +9,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Planned
 
-- Additional languages (Italian, Portuguese, Korean, Hindi, Turkish)
+- Additional languages (Hindi, Turkish, Dutch, Swedish)
 - AI-powered text generation
 - Custom text length specification
-- Keyboard shortcuts customization
+- More keyboard shortcuts
 - User preferences and favorites
+
+## [1.1.0] - 2025-01-XX
+
+### Added
+
+- ✨ **3 New Languages:**
+  - Italian (Italiano)
+  - Portuguese (Português)
+  - Korean (한국어)
+- ⌨️ **Keyboard Shortcuts:**
+  - `Ctrl+Alt+L` (Mac: `Cmd+Alt+L`) - Open Custom Generator
+  - `Ctrl+Alt+Shift+E` (Mac: `Cmd+Alt+Shift+E`) - Quick English Text
+- 📊 **216+ Text Combinations:** 12 languages × 6 categories × 3 lengths
+- 🎨 Each new language includes all 6 categories with 3-4 variations per combination
+
+### Changed
+
+- 📝 Updated README with keyboard shortcuts documentation
+- 🏷️ Updated package description to reflect 12 languages
+- 🔢 Version bumped from 1.0.1 to 1.1.0
+
+## [1.0.1] - 2025-01-XX
+
+### Fixed
+
+- 🐛 Logo path issue in package.json
+- 📦 Optimized package size
 
 ## [0.0.1] - 2025-10-13
 
