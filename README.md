@@ -4,14 +4,14 @@
 
 ![Multi-Language Lorem Ipsum](./src/logo.jpg)
 
-### Generate contextual placeholder text in 9 languages with 6 topic-based categories
+### Generate contextual placeholder text in 12 languages with 6 topic-based categories
 
-![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![VS Code](https://img.shields.io/badge/VS%20Code-1.85%2B-007ACC.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6.svg)
 
-**The most comprehensive Lorem Ipsum generator for VS Code with support for 9 languages and topic-specific content**
+**The most comprehensive Lorem Ipsum generator for VS Code with support for 12 languages and topic-specific content**
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Examples](#-examples) • [Contributing](#-contributing)
 
@@ -23,11 +23,12 @@
 
 Traditional lorem ipsum generators provide generic Latin text that doesn't reflect real-world content. **Multi-Language Lorem Ipsum** solves this by offering:
 
-- ✨ **9 World Languages** - Generate placeholder text in the language your project actually uses
+- ✨ **12 World Languages** - Generate placeholder text in the language your project actually uses
 - 🎨 **Topic-Based Categories** - Get contextually relevant content for different industries
 - 🎲 **Multiple Variations** - Each combination includes 3-4 different texts to avoid repetition
 - ⚡ **Instant Insert** - Text appears directly at your cursor position
-- 📦 **162+ Combinations** - 9 languages × 6 categories × 3 lengths = endless possibilities
+- ⌨️ **Keyboard Shortcuts** - Quick access with customizable hotkeys
+- 📦 **216+ Combinations** - 12 languages × 6 categories × 3 lengths = endless possibilities
 
 ---
 
@@ -35,19 +36,22 @@ Traditional lorem ipsum generators provide generic Latin text that doesn't refle
 
 ### 🌍 Multi-Language Support
 
-Generate placeholder text in 9 major world languages:
+Generate placeholder text in 12 major world languages:
 
-| Language | Native Name | Script   | Example                            |
-| -------- | ----------- | -------- | ---------------------------------- |
-| English  | English     | Latin    | "Innovative software solutions..." |
-| Persian  | فارسی       | Persian  | "سفری به یاد ماندنی را با..."      |
-| Arabic   | العربية     | Arabic   | "حلول رعاية صحية متقدمة..."        |
-| Chinese  | 中文        | Chinese  | "推动企业增长和卓越..."            |
-| Japanese | 日本語      | Japanese | "息をのむような景色を..."          |
-| Russian  | Русский     | Cyrillic | "Откройте для себя..."             |
-| Spanish  | Español     | Latin    | "Descubre paisajes..."             |
-| French   | Français    | Latin    | "Découvrez des paysages..."        |
-| German   | Deutsch     | Latin    | "Entdecken Sie atemberaubende..."  |
+| Language   | Native Name | Script   | Example                            |
+| ---------- | ----------- | -------- | ---------------------------------- |
+| English    | English     | Latin    | "Innovative software solutions..." |
+| Persian    | فارسی       | Persian  | "سفری به یاد ماندنی را با..."      |
+| Arabic     | العربية     | Arabic   | "حلول رعاية صحية متقدمة..."        |
+| Chinese    | 中文        | Chinese  | "推动企业增长和卓越..."            |
+| Japanese   | 日本語      | Japanese | "息をのむような景色を..."          |
+| Russian    | Русский     | Cyrillic | "Откройте для себя..."             |
+| Spanish    | Español     | Latin    | "Descubre paisajes..."             |
+| French     | Français    | Latin    | "Découvrez des paysages..."        |
+| German     | Deutsch     | Latin    | "Entdecken Sie atemberaubende..."  |
+| Italian    | Italiano    | Latin    | "Scopri paesaggi mozzafiato..."    |
+| Portuguese | Português   | Latin    | "Descubra paisagens..."            |
+| Korean     | 한국어      | Hangul   | "숨막히는 풍경을 발견하고..."      |
 
 ### 📂 Topic-Based Categories
 
@@ -120,15 +124,28 @@ npm run compile
 - `Lorem: Generate Spanish Text (Español)`
 - `Lorem: Generate French Text (Français)`
 - `Lorem: Generate German Text (Deutsch)`
+- `Lorem: Generate Italian Text (Italiano)` ⭐ NEW
+- `Lorem: Generate Portuguese Text (Português)` ⭐ NEW
+- `Lorem: Generate Korean Text (한국어)` ⭐ NEW
 - `Lorem: Generate Custom Text` - Full control over language, category, and length
+
+### ⌨️ Keyboard Shortcuts
+
+Boost your productivity with these default shortcuts:
+
+- **`Ctrl+Alt+L`** (Mac: `Cmd+Alt+L`) - Open Custom Generator (choose language, category, length)
+- **`Ctrl+Alt+Shift+E`** (Mac: `Cmd+Alt+Shift+E`) - Quick English Text
+
+> 💡 **Tip:** You can customize these shortcuts in VS Code's Keyboard Shortcuts settings (`Ctrl+K Ctrl+S`)
 
 ### 💡 Pro Tips
 
-- **Use keyboard shortcuts** for faster access
+- **Use keyboard shortcuts** for instant access to lorem generation
 - **Generate multiple times** to get different variations
 - **Mix languages** in multilingual projects
 - **Use topic-specific content** for more realistic mockups
 - **Try different categories** to match your project context
+- **Customize shortcuts** to match your workflow
 
 ---
 

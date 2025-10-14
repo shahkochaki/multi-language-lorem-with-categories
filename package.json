@@ -1,8 +1,8 @@
 {
     "name": "multi-language-lorem-with-categories",
     "displayName": "Multi-Language Lorem Ipsum Generator With Categories",
-    "description": "Generate contextual placeholder text in 9 languages (English, Persian, Arabic, Chinese, Japanese, Russian, Spanish, French, German) with 6 topic-based categories. Perfect for multilingual projects and realistic mockups.",
-    "version": "1.0.1",
+    "description": "Generate contextual placeholder text in 12 languages (English, Persian, Arabic, Chinese, Japanese, Russian, Spanish, French, German, Italian, Portuguese, Korean) with 6 topic-based categories and keyboard shortcuts. Perfect for multilingual projects and realistic mockups.",
+    "version": "1.1.0",
     "publisher": "shahkochaki",
     "author": {
         "name": "Ali Shahkochaki",
@@ -38,6 +38,9 @@
         "spanish",
         "french",
         "german",
+        "italian",
+        "portuguese",
+        "korean",
         "tourism",
         "medical",
         "technology",
@@ -46,7 +49,8 @@
         "food",
         "mockup",
         "dummy text",
-        "fake text"
+        "fake text",
+        "keyboard shortcuts"
     ],
     "engines": {
         "vscode": "^1.85.0"
