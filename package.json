@@ -97,8 +97,34 @@
                 "title": "Lorem: Generate German Text (Deutsch)"
             },
             {
+                "command": "lorem.generateItalian",
+                "title": "Lorem: Generate Italian Text (Italiano)"
+            },
+            {
+                "command": "lorem.generatePortuguese",
+                "title": "Lorem: Generate Portuguese Text (Português)"
+            },
+            {
+                "command": "lorem.generateKorean",
+                "title": "Lorem: Generate Korean Text (한국어)"
+            },
+            {
                 "command": "lorem.generateCustom",
                 "title": "Lorem: Generate Custom Text (Choose Language & Category)"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "lorem.generateCustom",
+                "key": "ctrl+alt+l",
+                "mac": "cmd+alt+l",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "lorem.generateEnglish",
+                "key": "ctrl+alt+shift+e",
+                "mac": "cmd+alt+shift+e",
+                "when": "editorTextFocus"
             }
         ]
     },

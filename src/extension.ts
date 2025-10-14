@@ -10,6 +10,9 @@ import { russianLorem } from "./lorem-data/russian";
 import { spanishLorem } from "./lorem-data/spanish";
 import { frenchLorem } from "./lorem-data/french";
 import { germanLorem } from "./lorem-data/german";
+import { italianLorem } from "./lorem-data/italian";
+import { portugueseLorem } from "./lorem-data/portuguese";
+import { koreanLorem } from "./lorem-data/korean";
 
 // Language configuration
 const loremData = {
@@ -22,6 +25,9 @@ const loremData = {
   spanish: spanishLorem,
   french: frenchLorem,
   german: germanLorem,
+  italian: italianLorem,
+  portuguese: portugueseLorem,
+  korean: koreanLorem,
 };
 
 type LanguageKey = keyof typeof loremData;
@@ -182,6 +188,24 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("lorem.generateGerman", () =>
       generateLorem("german")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateItalian", () =>
+      generateLorem("italian")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generatePortuguese", () =>
+      generateLorem("portuguese")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateKorean", () =>
+      generateLorem("korean")
     )
   );
 
