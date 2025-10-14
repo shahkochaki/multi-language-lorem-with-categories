@@ -172,7 +172,7 @@ Creaciones culinarias exquisitas utilizando ingredientes frescos de origen local
 multi-language-lorem/
 ├── src/
 │   ├── extension.ts              # Main extension logic
-│   ├── logo.jpg                  # Extension logo
+│   ├── logo.png                  # Extension logo
 │   └── lorem-data/               # Language data modules
 │       ├── english.ts            # 🇬🇧 English lorem texts
 │       ├── persian.ts            # 🇮🇷 Persian lorem texts
