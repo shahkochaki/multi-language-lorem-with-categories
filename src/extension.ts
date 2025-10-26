@@ -84,6 +84,9 @@ const lengths: Length[] = [
   { label: "Long (5+ sentences)", value: "long" },
 ];
 
+// Show the settings suggestion at most once per extension host session
+let settingsSuggestionShown = false;
+
 async function insertTextAtCursor(text: string) {
   const editor = vscode.window.activeTextEditor;
   if (editor) {
@@ -109,25 +112,32 @@ async function generateLorem(
     const configuredDefaultLanguage = config.get<string>("defaultLanguage") as
       | LanguageKey
       | undefined;
+    const useSettingsByDefault = config.get<boolean>(
+      "useSettingsByDefault",
+      false
+    );
 
-    // If language is not provided (defensive), use configured default language
+    // If language is not provided (defensive), and the user opted to use
+    // settings by default, apply the configured default language if available.
     if (
       !language &&
+      useSettingsByDefault &&
       configuredDefaultLanguage &&
       loremData[configuredDefaultLanguage]
     ) {
       // @ts-ignore - language is a parameter but we assign for fallback
       language = configuredDefaultLanguage;
     }
-    // If category is not specified, try configuration default first, then ask the user
-    if (!category && configuredDefaultCategory) {
+
+    // If category is not specified, and the user opted to use settings by
+    // default, try configuration default first; otherwise we'll prompt below.
+    if (!category && useSettingsByDefault && configuredDefaultCategory) {
       // If configured default exists for this language, use it
       const languageObjTmp: any = loremData[language] || {};
       if (languageObjTmp[configuredDefaultCategory]) {
         category = configuredDefaultCategory as CategoryKey;
       }
     }
-
     if (!category) {
       const selectedCategory = await vscode.window.showQuickPick(
         categories.map((c) => c.label),
@@ -142,9 +152,66 @@ async function generateLorem(
       category = categoryObj?.value || "tourism";
     }
 
-    // If length is not specified, try configuration default then ask the user
-    if (!length && configuredDefaultLength) {
+    // If length is not specified, and the user opted to use settings by
+    // default, apply configured default length; otherwise we'll prompt below.
+    if (!length && useSettingsByDefault && configuredDefaultLength) {
       length = configuredDefaultLength;
+    }
+
+    // If the user hasn't set any of the extension defaults, show a one-time
+    // suggestion offering to open settings. This is optional — we continue
+    // with generation even if the user ignores/dismisses the message.
+    try {
+      if (!settingsSuggestionShown) {
+        const inspect = (key: string) =>
+          vscode.workspace.getConfiguration("multiLanguageLorem").inspect(key);
+
+        const langInspect = inspect("defaultLanguage");
+        const catInspect = inspect("defaultCategory");
+        const lenInspect = inspect("defaultLength");
+
+        const hasUserDefaults = !!(
+          (langInspect &&
+            (langInspect.globalValue !== undefined ||
+              langInspect.workspaceValue !== undefined ||
+              langInspect.workspaceFolderValue !== undefined)) ||
+          (catInspect &&
+            (catInspect.globalValue !== undefined ||
+              catInspect.workspaceValue !== undefined ||
+              catInspect.workspaceFolderValue !== undefined)) ||
+          (lenInspect &&
+            (lenInspect.globalValue !== undefined ||
+              lenInspect.workspaceValue !== undefined ||
+              lenInspect.workspaceFolderValue !== undefined))
+        );
+
+        if (!hasUserDefaults) {
+          settingsSuggestionShown = true; // don't show repeatedly in this session
+          vscode.window
+            .showInformationMessage(
+              "Tip: you can set default language, category and length for the Lorem generator in Settings.",
+              "Open Settings",
+              "Don't show again"
+            )
+            .then(
+              (choice) => {
+                if (choice === "Open Settings") {
+                  // Open settings focused on our extension configuration
+                  // Provide the configuration section so the settings UI focuses correctly
+                  vscode.commands.executeCommand(
+                    "workbench.action.openSettings",
+                    "multiLanguageLorem"
+                  );
+                }
+              },
+              () => {
+                /* ignore */
+              }
+            );
+        }
+      }
+    } catch (e) {
+      // Non-fatal: if inspect isn't available for some reason, just continue
     }
 
     if (!length) {

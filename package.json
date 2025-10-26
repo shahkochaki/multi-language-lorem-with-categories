@@ -2,7 +2,7 @@
     "name": "multi-language-lorem-with-categories",
     "displayName": "Multi-Language Lorem Ipsum Generator With Categories",
     "description": "Generate contextual placeholder text in 12 languages (English, Persian, Arabic, Chinese, Japanese, Russian, Spanish, French, German, Italian, Portuguese, Korean) with 6 topic-based categories and keyboard shortcuts. Perfect for multilingual projects and realistic mockups.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisher": "shahkochaki",
     "author": {
         "name": "Ali Shahkochaki",
@@ -191,6 +191,11 @@
                     ],
                     "default": "medium",
                     "description": "Default text length when generating lorem if not selected."
+                },
+                "multiLanguageLorem.useSettingsByDefault": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When enabled, the extension will automatically apply your configured default language, category and length without prompting. When disabled, the extension will show the selection prompts even if defaults are configured."
                 }
             }
         },
