@@ -113,10 +113,87 @@
                 "title": "Lorem: Generate Korean Text (한국어)"
             },
             {
+                "command": "lorem.generateHindi",
+                "title": "Lorem: Generate Hindi Text (हिन्दी)"
+            },
+            {
+                "command": "lorem.generateTurkish",
+                "title": "Lorem: Generate Turkish Text (Türkçe)"
+            },
+            {
+                "command": "lorem.generateDutch",
+                "title": "Lorem: Generate Dutch Text (Nederlands)"
+            },
+            {
+                "command": "lorem.generateSwedish",
+                "title": "Lorem: Generate Swedish Text (Svenska)"
+            },
+            {
+                "command": "lorem.generateNorwegian",
+                "title": "Lorem: Generate Norwegian Text (Norsk)"
+            },
+            {
                 "command": "lorem.generateCustom",
                 "title": "Lorem: Generate Custom Text (Choose Language & Category)"
             }
         ],
+        "configuration": {
+            "type": "object",
+            "title": "Multi-Language Lorem Generator",
+            "properties": {
+                "multiLanguageLorem.defaultLanguage": {
+                    "type": "string",
+                    "enum": [
+                        "english",
+                        "persian",
+                        "arabic",
+                        "chinese",
+                        "japanese",
+                        "russian",
+                        "spanish",
+                        "french",
+                        "german",
+                        "italian",
+                        "portuguese",
+                        "korean",
+                        "hindi",
+                        "turkish",
+                        "dutch",
+                        "swedish",
+                        "norwegian"
+                    ],
+                    "default": "english",
+                    "description": "Default language used when generating lorem if not specified (can be overridden per command)."
+                },
+                "multiLanguageLorem.defaultCategory": {
+                    "type": "string",
+                    "enum": [
+                        "tourism",
+                        "medical",
+                        "technology",
+                        "business",
+                        "education",
+                        "food",
+                        "sports",
+                        "finance",
+                        "environment",
+                        "entertainment"
+                    ],
+                    "default": "tourism",
+                    "description": "Default category used when generating lorem if not specified."
+                },
+                "multiLanguageLorem.defaultLength": {
+                    "type": "string",
+                    "enum": [
+                        "short",
+                        "medium",
+                        "long"
+                    ],
+                    "default": "medium",
+                    "description": "Default text length when generating lorem if not selected."
+                }
+            }
+        },
         "keybindings": [
             {
                 "command": "lorem.generateCustom",

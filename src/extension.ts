@@ -13,6 +13,11 @@ import { germanLorem } from "./lorem-data/german";
 import { italianLorem } from "./lorem-data/italian";
 import { portugueseLorem } from "./lorem-data/portuguese";
 import { koreanLorem } from "./lorem-data/korean";
+import { hindiLorem } from "./lorem-data/hindi";
+import { turkishLorem } from "./lorem-data/turkish";
+import { dutchLorem } from "./lorem-data/dutch";
+import { swedishLorem } from "./lorem-data/swedish";
+import { norwegianLorem } from "./lorem-data/norwegian";
 
 // Language configuration
 const loremData = {
@@ -28,6 +33,11 @@ const loremData = {
   italian: italianLorem,
   portuguese: portugueseLorem,
   korean: koreanLorem,
+  hindi: hindiLorem,
+  turkish: turkishLorem,
+  dutch: dutchLorem,
+  swedish: swedishLorem,
+  norwegian: norwegianLorem,
 };
 
 type LanguageKey = keyof typeof loremData;
@@ -37,7 +47,11 @@ type CategoryKey =
   | "technology"
   | "business"
   | "education"
-  | "food";
+  | "food"
+  | "sports"
+  | "finance"
+  | "environment"
+  | "entertainment";
 type LengthKey = "short" | "medium" | "long";
 
 interface Category {
@@ -58,6 +72,10 @@ const categories: Category[] = [
   { label: "💼 Business", value: "business", icon: "💼" },
   { label: "📚 Education", value: "education", icon: "📚" },
   { label: "🍽️ Food", value: "food", icon: "🍽️" },
+  { label: "🏅 Sports", value: "sports", icon: "🏅" },
+  { label: "💹 Finance", value: "finance", icon: "💹" },
+  { label: "🌱 Environment", value: "environment", icon: "🌱" },
+  { label: "🎬 Entertainment", value: "entertainment", icon: "🎬" },
 ];
 
 const lengths: Length[] = [
@@ -82,7 +100,34 @@ async function generateLorem(
   length?: LengthKey
 ) {
   try {
-    // If category is not specified, ask the user
+    // Read user configuration defaults
+    const config = vscode.workspace.getConfiguration("multiLanguageLorem");
+    const configuredDefaultCategory = config.get<string>("defaultCategory");
+    const configuredDefaultLength = config.get<string>("defaultLength") as
+      | LengthKey
+      | undefined;
+    const configuredDefaultLanguage = config.get<string>("defaultLanguage") as
+      | LanguageKey
+      | undefined;
+
+    // If language is not provided (defensive), use configured default language
+    if (
+      !language &&
+      configuredDefaultLanguage &&
+      loremData[configuredDefaultLanguage]
+    ) {
+      // @ts-ignore - language is a parameter but we assign for fallback
+      language = configuredDefaultLanguage;
+    }
+    // If category is not specified, try configuration default first, then ask the user
+    if (!category && configuredDefaultCategory) {
+      // If configured default exists for this language, use it
+      const languageObjTmp: any = loremData[language] || {};
+      if (languageObjTmp[configuredDefaultCategory]) {
+        category = configuredDefaultCategory as CategoryKey;
+      }
+    }
+
     if (!category) {
       const selectedCategory = await vscode.window.showQuickPick(
         categories.map((c) => c.label),
@@ -97,7 +142,11 @@ async function generateLorem(
       category = categoryObj?.value || "tourism";
     }
 
-    // If length is not specified, ask the user
+    // If length is not specified, try configuration default then ask the user
+    if (!length && configuredDefaultLength) {
+      length = configuredDefaultLength;
+    }
+
     if (!length) {
       const selectedLength = await vscode.window.showQuickPick(
         lengths.map((l) => l.label),
@@ -112,8 +161,39 @@ async function generateLorem(
       length = lengthObj?.value || "medium";
     }
 
-    // Get the array of texts for the selected language, category, and length
-    const textArray = loremData[language][category][length];
+    // Resolve category existence for the selected language. If the chosen
+    // category is missing for that language, fall back to the language's
+    // first available category to avoid runtime errors.
+    const languageObj: any = loremData[language] || {};
+    if (!languageObj) {
+      vscode.window.showErrorMessage(
+        `No lorem data found for language: ${language}`
+      );
+      return;
+    }
+
+    if (!languageObj[category]) {
+      const available = Object.keys(languageObj);
+      const fallback =
+        (available.length && (available[0] as CategoryKey)) || "tourism";
+      vscode.window.showWarningMessage(
+        `Category '${category}' not available for ${language}. Falling back to '${fallback}'.`
+      );
+      category = fallback as CategoryKey;
+    }
+
+    // Get the raw value and normalize to an array (some data files may store a single string)
+    const raw = languageObj[category]
+      ? languageObj[category][length]
+      : undefined;
+    const textArray: string[] = Array.isArray(raw) ? raw : raw ? [raw] : [];
+
+    if (!textArray.length) {
+      vscode.window.showErrorMessage(
+        `No texts available for ${language}/${category}/${length}`
+      );
+      return;
+    }
 
     // Randomly select one text from the array
     const randomIndex = Math.floor(Math.random() * textArray.length);
@@ -206,6 +286,36 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("lorem.generateKorean", () =>
       generateLorem("korean")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateHindi", () =>
+      generateLorem("hindi")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateTurkish", () =>
+      generateLorem("turkish")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateDutch", () =>
+      generateLorem("dutch")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateSwedish", () =>
+      generateLorem("swedish")
+    )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.generateNorwegian", () =>
+      generateLorem("norwegian")
     )
   );
 
