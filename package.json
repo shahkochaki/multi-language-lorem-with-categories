@@ -1,8 +1,8 @@
 {
     "name": "multi-language-lorem-with-categories",
-    "displayName": "Multi-Language Lorem Ipsum Generator With Categories",
-    "description": "Generate contextual placeholder text in 12 languages (English, Persian, Arabic, Chinese, Japanese, Russian, Spanish, French, German, Italian, Portuguese, Korean) with 6 topic-based categories and keyboard shortcuts. Perfect for multilingual projects and realistic mockups.",
-    "version": "1.2.0",
+    "displayName": "Multi-Language Lorem Ipsum Pro",
+    "description": "Professional lorem ipsum generator with 17 languages, 10 categories, sidebar panel, history tracking, templates, multi-cursor support, and text statistics. Perfect for multilingual projects and realistic mockups.",
+    "version": "2.1.1",
     "publisher": "shahkochaki",
     "author": {
         "name": "Ali Shahkochaki",
@@ -41,16 +41,31 @@
         "italian",
         "portuguese",
         "korean",
+        "hindi",
+        "turkish",
+        "dutch",
+        "swedish",
+        "norwegian",
         "tourism",
         "medical",
         "technology",
         "business",
         "education",
         "food",
+        "sports",
+        "finance",
+        "environment",
+        "entertainment",
         "mockup",
         "dummy text",
         "fake text",
-        "keyboard shortcuts"
+        "keyboard shortcuts",
+        "history",
+        "templates",
+        "sidebar",
+        "multi-cursor",
+        "statistics",
+        "clipboard"
     ],
     "engines": {
         "vscode": "^1.85.0"
@@ -135,6 +150,74 @@
             {
                 "command": "lorem.generateCustom",
                 "title": "Lorem: Generate Custom Text (Choose Language & Category)"
+            },
+            {
+                "command": "lorem.copyToClipboard",
+                "title": "Lorem: Copy to Clipboard"
+            },
+            {
+                "command": "lorem.viewHistory",
+                "title": "Lorem: View History"
+            },
+            {
+                "command": "lorem.clearHistory",
+                "title": "Lorem: Clear History"
+            },
+            {
+                "command": "lorem.showStats",
+                "title": "Lorem: Show Statistics"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "loremSidebar",
+                    "title": "Lorem Generator",
+                    "icon": "$(list-unordered)"
+                }
+            ]
+        },
+        "views": {
+            "loremSidebar": [
+                {
+                    "type": "webview",
+                    "id": "loremSidebar",
+                    "name": "Lorem Generator",
+                    "icon": "$(list-unordered)",
+                    "contextualTitle": "Lorem Generator"
+                }
+            ]
+        },
+        "menus": {
+            "editor/context": [
+                {
+                    "submenu": "lorem.submenu",
+                    "group": "9_cutcopypaste"
+                }
+            ],
+            "lorem.submenu": [
+                {
+                    "command": "lorem.generateCustom",
+                    "group": "1_generate"
+                },
+                {
+                    "command": "lorem.generateEnglish",
+                    "group": "1_generate"
+                },
+                {
+                    "command": "lorem.copyToClipboard",
+                    "group": "2_clipboard"
+                },
+                {
+                    "command": "lorem.viewHistory",
+                    "group": "3_history"
+                }
+            ]
+        },
+        "submenus": [
+            {
+                "id": "lorem.submenu",
+                "label": "Lorem Generator"
             }
         ],
         "configuration": {

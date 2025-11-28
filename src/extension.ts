@@ -19,6 +19,19 @@ import { dutchLorem } from "./lorem-data/dutch";
 import { swedishLorem } from "./lorem-data/swedish";
 import { norwegianLorem } from "./lorem-data/norwegian";
 
+// Import managers and providers
+import { HistoryManager } from "./historyManager";
+import { TemplateManager } from "./templateManager";
+import { LoremSidebarProvider } from "./sidebarProvider";
+import {
+  LanguageKey,
+  CategoryKey,
+  LengthKey,
+  Category,
+  Length,
+  CustomTemplate,
+} from "./types";
+
 // Language configuration
 const loremData = {
   english: englishLorem,
@@ -40,30 +53,10 @@ const loremData = {
   norwegian: norwegianLorem,
 };
 
-type LanguageKey = keyof typeof loremData;
-type CategoryKey =
-  | "tourism"
-  | "medical"
-  | "technology"
-  | "business"
-  | "education"
-  | "food"
-  | "sports"
-  | "finance"
-  | "environment"
-  | "entertainment";
-type LengthKey = "short" | "medium" | "long";
-
-interface Category {
-  label: string;
-  value: CategoryKey;
-  icon: string;
-}
-
-interface Length {
-  label: string;
-  value: LengthKey;
-}
+// Global managers
+let historyManager: HistoryManager;
+let templateManager: TemplateManager;
+let sidebarProvider: LoremSidebarProvider;
 
 const categories: Category[] = [
   { label: "🏖️ Tourism", value: "tourism", icon: "🏖️" },
@@ -90,11 +83,23 @@ let settingsSuggestionShown = false;
 async function insertTextAtCursor(text: string) {
   const editor = vscode.window.activeTextEditor;
   if (editor) {
-    const selection = editor.selection;
+    // Support multiple cursors
+    const selections = editor.selections;
     await editor.edit((editBuilder) => {
-      editBuilder.insert(selection.active, text);
+      selections.forEach((selection) => {
+        editBuilder.insert(selection.active, text);
+      });
     });
   }
+}
+
+function getTextStats(text: string) {
+  const words = text.split(/\s+/).filter((w) => w.length > 0).length;
+  const characters = text.length;
+  const charactersNoSpaces = text.replace(/\s/g, "").length;
+  const lines = text.split("\n").length;
+
+  return { words, characters, charactersNoSpaces, lines };
 }
 
 async function generateLorem(
@@ -268,20 +273,84 @@ async function generateLorem(
 
     await insertTextAtCursor(text);
 
+    // Add to history
+    if (historyManager) {
+      await historyManager.addItem({
+        language,
+        category,
+        length,
+        text,
+      });
+      sidebarProvider?.refresh();
+    }
+
+    // Show stats
+    const stats = getTextStats(text);
     const languageName = language.charAt(0).toUpperCase() + language.slice(1);
     const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-    vscode.window.showInformationMessage(
-      `${languageName} ${categoryName} lorem text inserted! (${
-        randomIndex + 1
-      }/${textArray.length})`
+
+    const message = `${languageName} ${categoryName} inserted! (${
+      randomIndex + 1
+    }/${textArray.length}) | ${stats.words} words, ${stats.characters} chars`;
+
+    vscode.window.showInformationMessage(message, "Save as Template").then(
+      (selection) => {
+        if (selection === "Save as Template" && category && length) {
+          saveAsTemplate(language, category, length);
+        }
+      },
+      () => {}
     );
   } catch (error) {
     vscode.window.showErrorMessage(`Failed to generate lorem text: ${error}`);
   }
 }
 
+async function saveAsTemplate(
+  language: LanguageKey,
+  category: CategoryKey,
+  length: LengthKey
+) {
+  const name = await vscode.window.showInputBox({
+    prompt: "Enter a name for this template",
+    placeHolder: "e.g., My English Tourism Template",
+  });
+
+  if (name && templateManager) {
+    await templateManager.addTemplate({
+      name,
+      language,
+      category,
+      length,
+    });
+    sidebarProvider?.refresh();
+    vscode.window.showInformationMessage(`Template "${name}" saved!`);
+  }
+}
+
+async function generateFromTemplate(template: CustomTemplate) {
+  await generateLorem(template.language, template.category, template.length);
+}
+
 export function activate(context: vscode.ExtensionContext) {
   console.log("Multi-Language Lorem Ipsum extension is now active!");
+
+  // Initialize managers
+  historyManager = new HistoryManager(context);
+  templateManager = new TemplateManager(context);
+
+  // Register sidebar provider
+  sidebarProvider = new LoremSidebarProvider(
+    context.extensionUri,
+    historyManager,
+    templateManager
+  );
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(
+      LoremSidebarProvider.viewType,
+      sidebarProvider
+    )
+  );
 
   // Register commands for each language
   context.subscriptions.push(
@@ -407,6 +476,182 @@ export function activate(context: vscode.ExtensionContext) {
       if (languageObj) {
         await generateLorem(languageObj.value);
       }
+    })
+  );
+
+  // Generate from template command
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      "lorem.generateFromTemplate",
+      async (template: CustomTemplate) => {
+        await generateFromTemplate(template);
+      }
+    )
+  );
+
+  // Copy to clipboard command
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.copyToClipboard", async () => {
+      const languages = Object.keys(loremData).map((lang) => ({
+        label: lang.charAt(0).toUpperCase() + lang.slice(1),
+        value: lang as LanguageKey,
+      }));
+
+      const selectedLanguage = await vscode.window.showQuickPick(
+        languages.map((l) => l.label),
+        { placeHolder: "Select a language" }
+      );
+
+      if (!selectedLanguage) {
+        return;
+      }
+
+      const languageObj = languages.find((l) => l.label === selectedLanguage);
+      if (!languageObj) {
+        return;
+      }
+
+      const config = vscode.workspace.getConfiguration("multiLanguageLorem");
+      const configuredDefaultCategory = config.get<string>("defaultCategory");
+      const configuredDefaultLength = config.get<string>("defaultLength") as
+        | LengthKey
+        | undefined;
+      const useSettingsByDefault = config.get<boolean>(
+        "useSettingsByDefault",
+        false
+      );
+
+      let category: CategoryKey | undefined;
+      if (useSettingsByDefault && configuredDefaultCategory) {
+        category = configuredDefaultCategory as CategoryKey;
+      } else {
+        const selectedCategory = await vscode.window.showQuickPick(
+          categories.map((c) => c.label),
+          { placeHolder: "Select a category" }
+        );
+        if (!selectedCategory) {
+          return;
+        }
+        const categoryObj = categories.find(
+          (c) => c.label === selectedCategory
+        );
+        category = categoryObj?.value || "tourism";
+      }
+
+      let length: LengthKey | undefined;
+      if (useSettingsByDefault && configuredDefaultLength) {
+        length = configuredDefaultLength;
+      } else {
+        const selectedLength = await vscode.window.showQuickPick(
+          lengths.map((l) => l.label),
+          { placeHolder: "Select text length" }
+        );
+        if (!selectedLength) {
+          return;
+        }
+        const lengthObj = lengths.find((l) => l.label === selectedLength);
+        length = lengthObj?.value || "medium";
+      }
+
+      const languageData: any = loremData[languageObj.value] || {};
+      if (!languageData[category]) {
+        vscode.window.showErrorMessage(
+          `Category not available for ${languageObj.value}`
+        );
+        return;
+      }
+
+      const raw = languageData[category][length];
+      const textArray: string[] = Array.isArray(raw) ? raw : raw ? [raw] : [];
+
+      if (!textArray.length) {
+        vscode.window.showErrorMessage("No text available");
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * textArray.length);
+      const text = textArray[randomIndex];
+
+      await vscode.env.clipboard.writeText(text);
+
+      const stats = getTextStats(text);
+      vscode.window.showInformationMessage(
+        `Text copied to clipboard! ${stats.words} words, ${stats.characters} chars`
+      );
+    })
+  );
+
+  // View history command
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.viewHistory", async () => {
+      const history = historyManager.getHistory();
+
+      if (history.length === 0) {
+        vscode.window.showInformationMessage("No history yet!");
+        return;
+      }
+
+      const items = history.slice(0, 20).map((item) => ({
+        label: `${item.language} - ${item.category} (${item.length})`,
+        description: new Date(item.timestamp).toLocaleString(),
+        detail: item.text.substring(0, 100) + "...",
+        item,
+      }));
+
+      const selected = await vscode.window.showQuickPick(items, {
+        placeHolder: "Select a history item to insert",
+      });
+
+      if (selected) {
+        await insertTextAtCursor(selected.item.text);
+        vscode.window.showInformationMessage("Text inserted from history!");
+      }
+    })
+  );
+
+  // Clear history command
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.clearHistory", async () => {
+      const confirm = await vscode.window.showWarningMessage(
+        "Clear all lorem generation history?",
+        "Yes",
+        "No"
+      );
+
+      if (confirm === "Yes") {
+        await historyManager.clearHistory();
+        sidebarProvider.refresh();
+        vscode.window.showInformationMessage("History cleared!");
+      }
+    })
+  );
+
+  // Show stats command
+  context.subscriptions.push(
+    vscode.commands.registerCommand("lorem.showStats", () => {
+      const stats = historyManager.getStats();
+
+      const message = `
+📊 Lorem Generation Statistics
+
+Total generated: ${stats.total}
+
+Top Languages:
+${Object.entries(stats.languages)
+  .sort(([, a], [, b]) => (b as number) - (a as number))
+  .slice(0, 5)
+  .map(([lang, count]) => `  • ${lang}: ${count}`)
+  .join("\n")}
+
+Top Categories:
+${Object.entries(stats.categories)
+  .sort(([, a], [, b]) => (b as number) - (a as number))
+  .slice(0, 5)
+  .map(([cat, count]) => `  • ${cat}: ${count}`)
+  .join("\n")}
+      `;
+
+      vscode.window.showInformationMessage(message);
     })
   );
 }

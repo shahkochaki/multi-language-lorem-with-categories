@@ -1,7 +1,25 @@
+# VS Code files
 .vscode/**
 .vscode-test/**
+
+# Source files (compiled to out/)
 src/**
-.gitignore
-.yarnrc
 **/*.map
 **/*.ts
+
+# Git files
+.gitignore
+.git/
+.github/
+
+# Build files
+node_modules/**
+tsconfig.json
+
+# Documentation (keep only main README and CHANGELOG)
+docs/archive/**
+
+# Development files
+.yarnrc
+test-lorem.md
+*.vsix

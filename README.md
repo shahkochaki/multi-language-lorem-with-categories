@@ -1,384 +1,153 @@
-# 🌍 Multi-Language Lorem Ipsum — VS Code Extension
+# 🚀 Multi-Language Lorem Ipsum Pro
 
- <div align="center">
+<div align="center">
 
-![Multi-Language Lorem Ipsum](./src/logo.png)
-
-### Realistic placeholder text in multiple languages and topic categories
-
-![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![VS Code](https://img.shields.io/badge/VS%20Code-1.85%2B-007ACC.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6.svg)
 
-Features • Installation • Usage • Configuration • Contributing
+### The Ultimate Professional Lorem Ipsum Generator for VS Code
 
- </div>
+*Generate contextual placeholder text in 17 languages with 10 categories, history tracking, templates, and more!*
 
----
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [What's New](#-whats-new-in-v20)
 
-Multi-Language Lorem Ipsum makes your mockups and prototypes feel real. Instead of generic Latin text, insert contextual placeholder content written in your target language and industry domain — great for realistic UI designs, localization previews, documentation samples, and mock data.
-
-This README is intentionally thorough: it documents features, supported languages and categories, configuration options, developer instructions, packaging/publishing steps, contribution workflows, and a short changelog.
+</div>
 
 ---
 
-## 🎯 Key Benefits
+## 🎯 What Makes This Extension Special?
 
-- Produce realistic placeholder text in many languages to better reflect localized UI
-- Use topic-specific copy (e.g., Medical, Finance, Tourism) for realistic content in mocks
-- Multiple variations and lengths reduce repetition and improve realism
-- Configurable defaults and an optional "use settings by default" toggle for power users
-- Easy to integrate into workflows via Command Palette and keyboard shortcuts
+Unlike basic lorem ipsum generators, **Multi-Language Lorem Ipsum Pro** is a complete content generation toolkit:
 
----
-
-## 🌍 Supported Languages (sample)
-
-The extension includes curated content files for these languages (more can be added):
-
-| Language   | Native Name | Script     |
-| ---------- | ----------- | ---------- |
-| English    | English     | Latin      |
-| Persian    | فارسی       | Persian    |
-| Arabic     | العربية     | Arabic     |
-| Chinese    | 中文        | Chinese    |
-| Japanese   | 日本語      | Japanese   |
-| Russian    | Русский     | Cyrillic   |
-| Spanish    | Español     | Latin      |
-| French     | Français    | Latin      |
-| German     | Deutsch     | Latin      |
-| Italian    | Italiano    | Latin      |
-| Portuguese | Português   | Latin      |
-| Korean     | 한국어      | Hangul     |
-| Hindi      | हिन्दी      | Devanagari |
-| Turkish    | Türkçe      | Latin      |
-| Dutch      | Nederlands  | Latin      |
-| Swedish    | Svenska     | Latin      |
-| Norwegian  | Norsk       | Latin      |
-
-If you'd like additional languages, please open an issue or submit a PR following the data structure in `src/lorem-data/`.
+- 🌍 **17 World Languages** - From English to Norwegian, Arabic to Korean
+- 🎨 **10 Topic Categories** - Tourism, Medical, Technology, Business, Finance, Sports, and more
+- 📊 **Built-in Sidebar Panel** - Visual interface with history, templates, and statistics
+- 📝 **History Tracking** - Never lose your generated content
+- ⭐ **Custom Templates** - Save your favorite configurations
+- 📋 **Clipboard Operations** - Copy without inserting
+- 🎯 **Multi-Cursor Support** - Insert at multiple positions simultaneously
+- 📈 **Text Statistics** - Word count, character count, and more
+- ⚡ **Lightning Fast** - Instant generation with keyboard shortcuts
+- 🎲 **Smart Variations** - Multiple unique texts per combination
 
 ---
 
-## 📂 Topic-Based Categories
+## ✨ Features
 
-Each language module contains curated texts for topic categories. Current categories:
+### 🌍 17 Languages Support
 
-- 🏖️ Tourism — travel, destinations, cultural experiences
-- ⚕️ Medical — healthcare, medical services, wellness
-- 💻 Technology — software, cloud, AI, IT solutions
-- 💼 Business — consulting, strategy, corporate services
-- 📚 Education — learning, training, academic programs
-- 🍽️ Food — culinary, restaurants, menus
-- 🏅 Sports — events, training, fixtures, analysis
-- 💹 Finance — banking, investing, markets
-- 🌱 Environment — sustainability, climate, green tech
-- 🎬 Entertainment — film, music, media coverage
+| Language | Native | Language | Native |
+|----------|--------|----------|--------|
+| English | English | Italian | Italiano |
+| Persian | فارسی | Portuguese | Português |
+| Arabic | العربية | Korean | 한국어 |
+| Chinese | 中文 | Hindi | हिन्दी |
+| Japanese | 日本語 | Turkish | Türkçe |
+| Russian | Русский | Dutch | Nederlands |
+| Spanish | Español | Swedish | Svenska |
+| French | Français | Norwegian | Norsk |
+| German | Deutsch | | |
 
-These categories are chosen to provide realistic, domain-specific copy for common UI scenarios. You can request new categories or add your own by following the contribution guidelines below.
+### 📂 10 Professional Categories
 
----
+- 🏖️ **Tourism** - Travel, destinations, cultural experiences
+- ⚕️ **Medical** - Healthcare, treatments, patient care
+- 💻 **Technology** - Software, AI, digital transformation
+- 💼 **Business** - Consulting, strategy, corporate services
+- 📚 **Education** - Learning, academic programs, training
+- 🍽️ **Food** - Culinary, restaurants, gastronomy
+- 🏅 **Sports** - Events, training, fixtures, analysis
+- 💹 **Finance** - Banking, investing, markets, trading
+- 🌱 **Environment** - Sustainability, climate, green tech
+- 🎬 **Entertainment** - Film, music, media, shows
 
-## 📏 Lengths & Variations
+### 📏 Three Length Options
 
-Each category contains three length families and multiple variations:
-
-- Short — single-sentence snippets (good for labels and headings)
-- Medium — 2–3 sentence descriptions (cards, previews)
-- Long — multi-sentence paragraphs (articles, docs)
-
-Each (language, category, length) combination contains multiple variations; the generator picks one at random so repeated insertions produce different content.
-
----
-
-## 📦 Installation
-
-### From the VS Code Marketplace
-
-1.  Open **VS Code**
-2.  Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`)
-3.  Search for **"Multi-Language Lorem Ipsum"**
-4.  Click **Install**
-
-### Manual / Developer install
-
-```cmd
-git clone https://github.com/shahkochaki/multi-language-lorem-with-categories.git
-cd multi-language-lorem-with-categories
-npm install
-npm run compile
-# Press F5 in VS Code to launch the Extension Development Host for testing
-```
-
-To produce a VSIX package for manual installation or Marketplace upload:
-
-```cmd
-npm run compile
-npx vsce package
-# Install locally: code --install-extension ./multi-language-lorem-with-categories-1.2.0.vsix
-```
+- **Short** (1 sentence) - Perfect for labels, buttons, headings
+- **Medium** (2-3 sentences) - Ideal for cards, previews, descriptions
+- **Long** (5+ sentences) - Great for articles, paragraphs, content blocks
 
 ---
 
-## 🚀 Quick Usage Guide
+## 🎉 What's NEW in v2.0?
 
-1.  Place the text cursor where you want placeholder content
-2.  Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and type `Lorem`
-3.  Choose a language-specific command or `Lorem: Generate Custom Text`
-4.  If prompted, select category and length (unless you configured defaults)
-5.  The text is inserted at the cursor
+### 🎨 Beautiful Sidebar Panel
 
-### Example Commands
+A dedicated sidebar panel gives you instant access to:
+- 🎲 Quick generation button
+- 📊 Real-time statistics
+- ⭐ Saved templates
+- 📜 Generation history (last 10 items)
+- 🔍 Preview generated texts
+- 📋 Copy and insert from history
 
-- `Lorem: Generate English Text`
-- `Lorem: Generate Persian Text (فارسی)`
-- `Lorem: Generate Arabic Text (العربية)`
-- `Lorem: Generate Chinese Text (中文)`
-- `Lorem: Generate Custom Text` — choose language, category, length
+![Sidebar Panel](https://via.placeholder.com/600x400?text=Sidebar+Panel+Screenshot)
 
-### Keyboard Shortcuts (defaults)
+### 📝 History Tracking
 
-- `Ctrl+Alt+L` / `Cmd+Alt+L` — Open Custom Generator
-- `Ctrl+Alt+Shift+E` / `Cmd+Alt+Shift+E` — Quick English Text
+Never lose your generated content:
+- Automatically saves last 50 generations
+- View history with timestamps
+- Re-insert or copy from history
+- Delete individual items or clear all
+- Statistics on your most-used languages and categories
 
-Customize these in VS Code's Keyboard Shortcuts to fit your workflow.
+### ⭐ Custom Templates
 
----
+Save your favorite configurations:
+- Create named templates (e.g., "Blog Header", "Product Description")
+- One-click generation from templates
+- Manage templates in sidebar
+- Perfect for repetitive workflows
 
-## ⚙️ Configuration (Settings)
+### 📋 Enhanced Clipboard Support
 
-Settings are registered under the `multiLanguageLorem` configuration section. You can open them in Settings or edit your `settings.json`:
+New clipboard command:
+- Generate and copy without inserting
+- Perfect for external apps
+- Shows text statistics after copy
 
-- `multiLanguageLorem.defaultLanguage` (string) — e.g. `"english"`
-- `multiLanguageLorem.defaultCategory` (string) — e.g. `"tourism"`
-- `multiLanguageLorem.defaultLength` (string) — `"short" | "medium" | "long"`
-- `multiLanguageLorem.useSettingsByDefault` (boolean) — when true, the extension will apply configured defaults automatically; when false (default), the extension will prompt you even if defaults exist
+### 🎯 Multi-Cursor Support
 
-Behavior notes:
+Professional editing support:
+- Insert at multiple cursor positions simultaneously
+- Works with multi-select
+- Saves time on bulk editing
 
-- If a configured default category isn't available for a language, the extension falls back to the language's first available category and shows a small warning.
-- The extension shows a one-time tip suggesting you set defaults if you haven't configured any yet; this is non-blocking.
+### 📈 Text Statistics
 
----
+Real-time feedback:
+- Word count
+- Character count (with/without spaces)
+- Line count
+- Shown after every generation
 
-## 🔧 Developer & Contribution Guide
+### 🎨 Context Menu Integration
 
-We welcome contributions. Follow the steps below to add languages, categories, or improve the extension.
-
-Project layout (important files):
-
-```
-multi-language-lorem-with-categories/
-├─ src/
-│  ├─ extension.ts           # Extension activation and commands
-│  └─ lorem-data/            # Language modules (one file per language)
-│     ├─ english.ts
-│     └─ persian.ts
-├─ out/                      # Compiled JS (produced by tsc)
-├─ package.json              # VS Code extension manifest
-├─ readme.md                 # User-facing README (this file)
-├─ README_PROFESSIONAL.md    # Optional additional marketing README
-└─ ARRAY_STRUCTURE_GUIDE.md   # How to add languages and maintain structure
-```
-
-Adding a new language:
-
-1.  Create `src/lorem-data/<language>.ts` exporting an object with the category keys.
-2.  Each category should contain `short`, `medium`, and `long` arrays of strings.
-3.  Add an import and register the language in `src/extension.ts` (see existing pattern).
-4.  Add a command entry in `package.json` (if you want direct command per language).
-
-Coding & testing flow:
-
-```cmd
-npm install
-npm run compile
-npm run watch     # optional - auto compile during development
-# Press F5 in VS Code to run the Extension Development Host
-```
-
----
-
-## 📦 Packaging & Publishing
-
-I generated a VSIX for development. To publish publicly to the Visual Studio Marketplace you need:
-
-1.  A publisher account registered with Visual Studio Marketplace
-2.  A Personal Access Token (PAT) with appropriate packaging permissions
-
-Publish steps (local):
-
-```cmd
-npx vsce login <publisher>
-npx vsce publish
-```
-
-OR package and upload manually:
-
-```cmd
-npx vsce package
-# Upload the produced .vsix from the publisher dashboard
-```
-
-If you want, I can prepare release notes and a publish script. I cannot publish on your behalf without your PAT (do not share tokens in chat).
-
----
-
-## 📖 Examples (snippets)
-
-Short (English — Technology):
-
-> Innovative software solutions powering digital transformation across industries.
-
-Medium (Persian — Tourism):
-
-> سفری به یاد ماندنی را با بازدید از جاذبه‌های گردشگری بی‌نظیر تجربه کنید. از کوهستان‌های مرتفع تا سواحل زیبا، هر مقصد داستانی دارد.
-
-Long (Spanish — Food):
-
-> Creaciones culinarias exquisitas utilizando ingredientes frescos de origen local y recetas auténticas. Nuestros talentosos chefs elaboran platos excepcionales que celebran sabores diversos y tradiciones culinarias. Cada comida es un viaje a través del sabor, la textura y la excelencia en la presentación.
-
----
-
-## 📊 Current Statistics (approx.)
-
-| Metric                                | Value |
-| ------------------------------------- | ----- |
-| Languages included                    | 17+   |
-| Categories per language               | 10    |
-| Text lengths                          | 3     |
-| Variations per (lang,category,length) | 2–6   |
-| Estimated unique combinations         | 510+  |
-
----
-
-## 🤝 Contributing
-
-We welcome improvements, new languages, and better texts. Please:
-
-1.  Fork the repo and create a topic branch
-2.  Add or update language files under `src/lorem-data/`
-3.  Update `extension.ts` imports if you add new direct commands (optional)
-4.  Run `npm run lint` and `npm run compile` locally
-5.  Open a pull request with a clear description and examples
-
-If you are adding a language, please provide at least 2–3 variations per length per category and ensure Unicode/RTL handling where relevant.
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📈 Changelog (summary)
-
-### v1.2.0 — 2025-10-26
-
-- Added 5 new languages (Hindi, Turkish, Dutch, Swedish, Norwegian)
-- Added 4 new categories (Sports, Finance, Environment, Entertainment)
-- Added settings: defaultLanguage, defaultCategory, defaultLength, useSettingsByDefault
-- Improved generate flow with safe fallbacks and one-time settings suggestion
-- Updated README, packaging support and commands
-
-### v1.1.0 — earlier
-
-- Initial multilingual support and category system
-
----
-
-## 🙏 Acknowledgments
-
-- Built with ❤️ for multilingual projects and realistic mockups.
-- Thanks to contributors and users who improve the dataset and translations.
-
----
-
-## 📧 Support & Contact
-
-- Issues & feature requests: https://github.com/shahkochaki/multi-language-lorem-with-categories/issues
-- Email: ali.shahkochaki7@gmail.com
-
----
-
-If this extension helps you, please star the repository and consider contributing.
-
-## Happy coding! 🚀
-
-## 🎯 Why Choose This Extension?
-
-Traditional lorem ipsum generators provide generic Latin text that doesn't reflect real-world content. **Multi-Language Lorem Ipsum** solves this by offering:
-
-- ✨ **12 World Languages** - Generate placeholder text in the language your project actually uses
-- 🎨 **Topic-Based Categories** - Get contextually relevant content for different industries
-- 🎲 **Multiple Variations** - Each combination includes 3-4 different texts to avoid repetition
-- ⚡ **Instant Insert** - Text appears directly at your cursor position
-- ⌨️ **Keyboard Shortcuts** - Quick access with customizable hotkeys
-- 📦 **216+ Combinations** - 12 languages × 6 categories × 3 lengths = endless possibilities
-
----
-
-## 🌟 Features
-
-### 🌍 Multi-Language Support
-
-Generate placeholder text in 12 major world languages:
-
-| Language   | Native Name | Script   | Example                            |
-| ---------- | ----------- | -------- | ---------------------------------- |
-| English    | English     | Latin    | "Innovative software solutions..." |
-| Persian    | فارسی       | Persian  | "سفری به یاد ماندنی را با..."      |
-| Arabic     | العربية     | Arabic   | "حلول رعاية صحية متقدمة..."        |
-| Chinese    | 中文        | Chinese  | "推动企业增长和卓越..."            |
-| Japanese   | 日本語      | Japanese | "息をのむような景色を..."          |
-| Russian    | Русский     | Cyrillic | "Откройте для себя..."             |
-| Spanish    | Español     | Latin    | "Descubre paisajes..."             |
-| French     | Français    | Latin    | "Découvrez des paysages..."        |
-| German     | Deutsch     | Latin    | "Entdecken Sie atemberaubende..."  |
-| Italian    | Italiano    | Latin    | "Scopri paesaggi mozzafiato..."    |
-| Portuguese | Português   | Latin    | "Descubra paisagens..."            |
-| Korean     | 한국어      | Hangul   | "숨막히는 풍경을 발견하고..."      |
-
-### 📂 Topic-Based Categories
-
-Each language includes professionally written content for 6 categories:
-
-- 🏖️ **Tourism** - Travel, destinations, cultural experiences, tour packages
-- ⚕️ **Medical** - Healthcare, treatments, medical services, patient care
-- 💻 **Technology** - Software, digital transformation, IT solutions, development
-- 💼 **Business** - Consulting, strategy, corporate services, growth
-- 📚 **Education** - Learning, academic programs, schools, training
-- 🍽️ **Food** - Culinary, restaurants, gastronomy, recipes
-
-### 📏 Three Text Lengths
-
-- **Short** (1 sentence) - Perfect for headings, labels, and buttons
-- **Medium** (2-3 sentences) - Ideal for descriptions, previews, and cards
-- **Long** (5+ sentences) - Great for paragraphs, articles, and detailed content
-
-### 🎲 Variation System
-
-Unlike traditional generators, each combination includes **3-4 unique variations**. Generate the same category and length multiple times to receive different content - no more repetitive placeholder text!
+Right-click anywhere in editor:
+- Quick access to lorem generation
+- Generate, copy, view history
+- Integrated into VS Code's native menu
 
 ---
 
 ## 📦 Installation
 
-### From VS Code Marketplace
+### From VS Code Marketplace (Recommended)
 
 1. Open **VS Code**
-2. Go to Extensions (`Ctrl+Shift+X` or `Cmd+Shift+X`)
-3. Search for **"Multi-Language Lorem Ipsum"**
+2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (Mac)
+3. Search for **"Multi-Language Lorem Ipsum Pro"**
 4. Click **Install**
 
 ### Manual Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/multi-language-lorem.git
-cd multi-language-lorem
+git clone https://github.com/shahkochaki/multi-language-lorem-with-categories.git
+cd multi-language-lorem-with-categories
 
 # Install dependencies
 npm install
@@ -386,7 +155,7 @@ npm install
 # Compile
 npm run compile
 
-# Press F5 in VS Code to launch Extension Development Host
+# Press F5 to test in Extension Development Host
 ```
 
 ---
@@ -395,275 +164,266 @@ npm run compile
 
 ### Quick Start
 
-1. **Place your cursor** where you want the text
-2. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
-3. Type `Lorem` and select a command
-4. Choose **category** and **length**
-5. Text is inserted instantly! ✨
-
-### Available Commands
-
-- `Lorem: Generate English Text`
-- `Lorem: Generate Persian Text (فارسی)`
-- `Lorem: Generate Arabic Text (العربية)`
-- `Lorem: Generate Chinese Text (中文)`
-- `Lorem: Generate Japanese Text (日本語)`
-- `Lorem: Generate Russian Text (Русский)`
-- `Lorem: Generate Spanish Text (Español)`
-- `Lorem: Generate French Text (Français)`
-- `Lorem: Generate German Text (Deutsch)`
-- `Lorem: Generate Italian Text (Italiano)` ⭐ NEW
-- `Lorem: Generate Portuguese Text (Português)` ⭐ NEW
-- `Lorem: Generate Korean Text (한국어)` ⭐ NEW
-- `Lorem: Generate Custom Text` - Full control over language, category, and length
+1. **Open the Sidebar Panel**
+   - Click the Lorem icon in the Activity Bar (left sidebar)
+   
+2. **Generate Text**
+   - Click "🎲 Generate Lorem Text" button
+   - OR use Command Palette: `Ctrl+Shift+P` → `Lorem: Generate Custom Text`
+   - OR right-click in editor → `Lorem Generator` → choose option
+   
+3. **Choose Options**
+   - Select language
+   - Select category
+   - Select length
+   
+4. **Done!**
+   - Text inserted at cursor
+   - Statistics shown
+   - Saved to history automatically
 
 ### ⌨️ Keyboard Shortcuts
 
-Boost your productivity with these default shortcuts:
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+Alt+L` (Mac: `Cmd+Alt+L`) | Open Custom Generator |
+| `Ctrl+Alt+Shift+E` (Mac: `Cmd+Alt+Shift+E`) | Quick English Text |
 
-- **`Ctrl+Alt+L`** (Mac: `Cmd+Alt+L`) - Open Custom Generator (choose language, category, length)
-- **`Ctrl+Alt+Shift+E`** (Mac: `Cmd+Alt+Shift+E`) - Quick English Text
+*Customize shortcuts: File → Preferences → Keyboard Shortcuts*
 
-> 💡 **Tip:** You can customize these shortcuts in VS Code's Keyboard Shortcuts settings (`Ctrl+K Ctrl+S`)
+---
 
-### 💡 Pro Tips
+## 💡 Advanced Usage
 
-- **Use keyboard shortcuts** for instant access to lorem generation
-- **Generate multiple times** to get different variations
-- **Mix languages** in multilingual projects
-- **Use topic-specific content** for more realistic mockups
-- **Try different categories** to match your project context
-- **Customize shortcuts** to match your workflow
+### Using Templates
+
+1. Generate lorem text as usual
+2. Click "Save as Template" in the notification
+3. Enter a name (e.g., "Product Headlines")
+4. Access from sidebar or use directly
+
+### Working with History
+
+**View History:**
+- Open sidebar to see last 10 items
+- OR: Command Palette → `Lorem: View History` for last 20
+
+**Re-use History:**
+- Click "Insert" to add to current cursor
+- Click "Copy" to copy to clipboard
+- Click "Delete" to remove item
+
+### Statistics Dashboard
+
+Command Palette → `Lorem: Show Statistics`
+
+Shows:
+- Total texts generated
+- Top 5 used languages
+- Top 5 used categories
+
+### Multi-Cursor Tips
+
+1. Place multiple cursors (`Ctrl+Alt+Click` or `Alt+Shift+Down`)
+2. Generate lorem text
+3. Text inserted at all cursor positions
 
 ---
 
 ## 📖 Examples
 
-### English - Technology (Short)
-
+### English - Technology (Medium)
 ```
-Innovative software solutions powering digital transformation across industries.
-```
-
-### Persian - Tourism (Medium)
-
-```
-سفری به یاد ماندنی را با بازدید از جاذبه‌های گردشگری بی‌نظیر تجربه کنید. از کوهستان‌های مرتفع تا سواحل زیبا، هر مقصد داستانی دارد. تورهای گردشگری ما با راهنمایان حرفه‌ای و برنامه‌ریزی دقیق، لحظات فراموش‌نشدنی را برای شما رقم می‌زنند.
+Innovative software solutions powering digital transformation across industries. Our cutting-edge technology stack enables seamless integration and scalability.
 ```
 
-### Arabic - Medical (Short)
-
+### Persian - Tourism (Long)
 ```
-حلول رعاية صحية متقدمة مع تكنولوجيا طبية حديثة وأطباء خبراء.
-```
-
-### Chinese - Business (Medium)
-
-```
-推动企业增长和卓越运营的战略咨询服务。我们经验丰富的顾问提供可行的见解、市场分析和转型路线图。我们与组织合作，释放价值并实现可持续的竞争优势。
+سفری به یاد ماندنی را با بازدید از جاذبه‌های گردشگری بی‌نظیر تجربه کنید. از کوهستان‌های مرتفع تا سواحل زیبا، هر مقصد داستانی دارد. تورهای گردشگری ما با راهنمایان حرفه‌ای و برنامه‌ریزی دقیق، لحظات فراموش‌نشدنی را برای شما رقم می‌زنند. با پکیج‌های سفر منحصر به فرد ما، دنیای جدیدی را کشف کنید.
 ```
 
-### Spanish - Food (Long)
-
+### Spanish - Food (Short)
 ```
-Creaciones culinarias exquisitas utilizando ingredientes frescos de origen local y recetas auténticas. Nuestros talentosos chefs elaboran platos excepcionales que celebran sabores diversos y tradiciones culinarias. Cada comida es un viaje a través del sabor, la textura y la excelencia en la presentación. Desde la frescura de la granja a la mesa hasta la cocina de fusión innovadora, deleitamos paladares exigentes con menús de temporada.
+Creaciones culinarias exquisitas con ingredientes frescos y auténticos.
 ```
 
 ---
 
-## 🏗️ Project Structure
+## 🎨 Sidebar Panel Guide
 
-```
-multi-language-lorem/
-├── src/
-│   ├── extension.ts              # Main extension logic
-│   ├── logo.png                  # Extension logo
-│   └── lorem-data/               # Language data modules
-│       ├── english.ts            # 🇬🇧 English lorem texts
-│       ├── persian.ts            # 🇮🇷 Persian lorem texts
-│       ├── arabic.ts             # 🇸🇦 Arabic lorem texts
-│       ├── chinese.ts            # 🇨🇳 Chinese lorem texts
-│       ├── japanese.ts           # 🇯🇵 Japanese lorem texts
-│       ├── russian.ts            # 🇷🇺 Russian lorem texts
-│       ├── spanish.ts            # 🇪🇸 Spanish lorem texts
-│       ├── french.ts             # 🇫🇷 French lorem texts
-│       └── german.ts             # 🇩🇪 German lorem texts
-├── out/                          # Compiled JavaScript files
-├── .vscode/
-│   ├── launch.json               # Debug configuration
-│   └── tasks.json                # Build tasks configuration
-├── package.json                  # Extension manifest
-├── tsconfig.json                 # TypeScript configuration
-├── README.md                     # This file
-├── CHANGELOG.md                  # Version history
-└── ARRAY_STRUCTURE_GUIDE.md      # Development guide
+### 📊 Statistics Section
+- **Total Generated**: Number of texts you've created
+- **Templates Saved**: Your saved templates count
+
+### ⭐ Templates Section
+- List of all saved templates
+- **Use**: Generate from this template
+- **Delete**: Remove template
+
+### 📜 History Section
+- Last 10 generated texts
+- Shows: timestamp, language, category, length
+- Preview first 150 characters
+- **Copy**: Copy to clipboard
+- **Insert**: Insert at cursor
+- **Delete**: Remove from history
+
+---
+
+## ⚙️ Configuration
+
+### Settings (File → Preferences → Settings)
+
+Search for **"Multi Language Lorem"**
+
+**Available Settings:**
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| `multiLanguageLorem.defaultLanguage` | Default language | `english` |
+| `multiLanguageLorem.defaultCategory` | Default category | `tourism` |
+| `multiLanguageLorem.defaultLength` | Default length | `medium` |
+| `multiLanguageLorem.useSettingsByDefault` | Auto-apply defaults without prompting | `false` |
+
+**Example `settings.json`:**
+
+```json
+{
+  "multiLanguageLorem.defaultLanguage": "persian",
+  "multiLanguageLorem.defaultCategory": "technology",
+  "multiLanguageLorem.defaultLength": "medium",
+  "multiLanguageLorem.useSettingsByDefault": true
+}
 ```
 
 ---
 
-## 🛠️ Development
+## 🎯 Use Cases
 
-### Prerequisites
+### Web Development
+- Mock website content during design
+- Test responsive layouts with realistic text
+- Multi-language site prototyping
 
-- **Node.js** 18.x or higher
-- **VS Code** 1.85.0 or higher
-- **TypeScript** 5.3 or higher
+### UI/UX Design
+- Figma/Sketch mockups with real language text
+- Test text overflow and truncation
+- Create realistic user flows
 
-### Setup for Development
+### Content Writing
+- Quick placeholder for blog posts
+- Draft structures before real content
+- Multiple language content templates
 
-```bash
-# Install dependencies
-npm install
-
-# Compile TypeScript
-npm run compile
-
-# Run in watch mode (auto-compile on changes)
-npm run watch
-
-# Run linter
-npm run lint
-```
+### Documentation
+- Example data for API docs
+- Sample text for user guides
+- Multi-language documentation
 
 ### Testing
-
-1. Open the project in VS Code
-2. Press `F5` to launch Extension Development Host
-3. Test commands in the new VS Code window
-4. Check Debug Console for logs
-
-### Adding New Languages
-
-See `ARRAY_STRUCTURE_GUIDE.md` for detailed instructions on adding new languages.
-
-Quick steps:
-
-1. Create new file in `src/lorem-data/`
-2. Export object with 6 categories
-3. Each category has 3 arrays (short, medium, long)
-4. Each array contains 3-4 text variations
-5. Import and register in `extension.ts`
+- Test internationalization (i18n)
+- RTL (Right-to-Left) layout testing
+- Unicode character handling
 
 ---
 
 ## 📊 Statistics
 
-| Metric                        | Value |
-| ----------------------------- | ----- |
-| **Languages**                 | 9     |
-| **Categories per Language**   | 6     |
-| **Text Lengths**              | 3     |
-| **Variations per Length**     | 3-4   |
-| **Total Unique Combinations** | 162+  |
-| **Total Different Texts**     | 450+  |
+| Metric | Count |
+|--------|-------|
+| Languages | 17 |
+| Categories | 10 |
+| Length Options | 3 |
+| Unique Combinations | 510+ |
+| Text Variations | 1500+ |
+| Commands | 22 |
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+We welcome contributions! Here's how:
 
-### 🌐 Adding More Languages
+### Adding Languages
+1. Create file: `src/lorem-data/your-language.ts`
+2. Follow existing structure (10 categories × 3 lengths)
+3. Each length needs 3-5 variations
+4. Submit PR with examples
 
-- Korean, Italian, Portuguese, Turkish, Hindi, etc.
-- Follow existing structure in `src/lorem-data/`
-- Provide professional, contextually accurate texts
+### Adding Categories
+1. Update all language files
+2. Add to `types.ts`
+3. Update `extension.ts` categories array
+4. Submit PR
 
-### 📂 Adding More Categories
+### Reporting Issues
+- Use [GitHub Issues](https://github.com/shahkochaki/multi-language-lorem-with-categories/issues)
+- Provide VS Code version, OS, extension version
+- Include steps to reproduce
 
-- Sports, Science, Art, Entertainment, Real Estate, etc.
-- Maintain consistency across all languages
+---
 
-### 🐛 Reporting Issues
+## 🗺️ Roadmap
 
-- Use [GitHub Issues](https://github.com/yourusername/multi-language-lorem/issues)
-- Provide clear description and steps to reproduce
+### v2.1 (Next)
+- [ ] AI-powered custom text generation
+- [ ] Export/import templates
+- [ ] Bulk generation (multiple paragraphs)
+- [ ] Custom text length (exact word count)
 
-### 💡 Feature Requests
+### v2.2
+- [ ] Integration with popular frameworks (React, Vue, Angular snippets)
+- [ ] Markdown formatting options
+- [ ] HTML/CSS lorem snippets
+- [ ] API for external tools
 
-- Open a [Discussion](https://github.com/yourusername/multi-language-lorem/discussions)
-- Explain the use case and benefits
+### v3.0
+- [ ] 30+ languages support
+- [ ] 20+ categories
+- [ ] Cloud sync for history/templates
+- [ ] Team collaboration features
+- [ ] Custom language packs
 
 ---
 
 ## 📝 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Inspired by the need for realistic, multi-language placeholder text
-- Built with ❤️ for the VS Code community
-- Thanks to all contributors and users who help improve this extension
+- Built with ❤️ by [Ali Shahkochaki](mailto:ali.shahkochaki7@gmail.com)
+- Thanks to all contributors and users
+- Inspired by multilingual web development needs
 
 ---
 
-## 📧 Support & Contact
+## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/multi-language-lorem/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/multi-language-lorem/discussions)
-- **Email**: your.email@example.com
-
----
-
-## 🔮 Roadmap
-
-### v0.1.0 (Coming Soon)
-
-- [ ] Marketplace publication
-- [ ] Add Italian, Portuguese, Korean languages
-- [ ] Custom keyboard shortcuts
-
-### v0.2.0
-
-- [ ] AI-powered dynamic text generation
-- [ ] Custom text length (exact word/character count)
-- [ ] Save favorite combinations
-
-### v0.3.0
-
-- [ ] Export/import custom templates
-- [ ] Integration with popular frameworks
-- [ ] VS Code snippets support
-
-### Future
-
-- [ ] More languages (20+ total)
-- [ ] More categories (12+ total)
-- [ ] API for external usage
-- [ ] Community-contributed templates
+- **Issues**: [GitHub Issues](https://github.com/shahkochaki/multi-language-lorem-with-categories/issues)
+- **Email**: ali.shahkochaki7@gmail.com
+- **Discussions**: [GitHub Discussions](https://github.com/shahkochaki/multi-language-lorem-with-categories/discussions)
 
 ---
 
-## 📈 Changelog
+## ⭐ Show Your Support
 
-### [0.0.1] - 2025-10-13
-
-#### Added
-
-- Initial release
-- Support for 9 languages
-- 6 topic-based categories
-- 3 text length options
-- Multiple variations per combination
-- Modular architecture
-- Random text selection
-- Direct cursor insertion
+If you find this extension useful:
+- ⭐ Star the [GitHub repository](https://github.com/shahkochaki/multi-language-lorem-with-categories)
+- 📝 Write a review on VS Code Marketplace
+- 🐛 Report bugs and suggest features
+- 🤝 Contribute to the project
 
 ---
 
 <div align="center">
 
-### ⭐ If you find this extension useful, please star the repository!
-
-**Made with 💙 by developers, for developers**
-
-[Report Bug](https://github.com/yourusername/multi-language-lorem/issues) • [Request Feature](https://github.com/yourusername/multi-language-lorem/issues) • [Give Feedback](https://github.com/yourusername/multi-language-lorem/discussions)
-
----
+### Made with 💙 for developers worldwide
 
 **Happy Coding! 🚀**
+
+[⬆ Back to Top](#-multi-language-lorem-ipsum-pro)
 
 </div>
