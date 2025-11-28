@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.1] - 2024-11-28
+
+### 📦 Package & Documentation Improvements
+
+#### Improved
+- 🗂️ **Project Organization**: Complete restructuring of documentation files
+  - Created dedicated `docs/` folder for all documentation
+  - Moved old files to `docs/archive/` for historical reference
+  - Cleaned up root directory (25 files → 6 essential files)
+  - Better file organization and discoverability
+
+#### Added
+- 📚 **New Documentation Files**:
+  - `docs/README.md` - Documentation index and navigation
+  - `docs/QUICK_START.md` - 2-minute quick start guide for new users
+  - `docs/PROJECT_STRUCTURE.md` - Complete project structure documentation (3000+ words)
+  - `docs/ORGANIZATION_SUMMARY.md` - Organization details and file structure
+
+#### Changed
+- 📝 **Enhanced CHANGELOG**: Added version comparison table and upgrade guides
+- 🎯 **Improved .vscodeignore**: Optimized package size by excluding archive files
+- 📖 **Better Navigation**: All documentation now properly linked and organized
+
+#### Fixed
+- 🐛 Minor TypeScript type safety improvements
+- 📦 Package will now be smaller and cleaner (excludes archive folder)
+
+---
+
 ## [2.0.0] - 2024-11-28
 
 ### 🎉 Major Update - Complete Redesign
