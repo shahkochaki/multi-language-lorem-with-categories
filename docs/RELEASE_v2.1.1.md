@@ -13,16 +13,19 @@ This is a **maintenance release** focusing on project organization and documenta
 ## ✨ What's New
 
 ### 🗂️ Better Organization
+
 - **Clean Root Directory**: Reduced from 25 files to just 6 essential files
 - **Documentation Hub**: All docs now in organized `docs/` folder
 - **Archive System**: Old files preserved in `docs/archive/`
 
 ### 📚 Enhanced Documentation
+
 - **Quick Start Guide**: New 2-minute getting started guide
 - **Project Structure**: Comprehensive 3000+ word structure documentation
 - **Better Navigation**: All docs properly linked and indexed
 
 ### 📦 Package Improvements
+
 - **Smaller Size**: Archive files excluded from package
 - **Cleaner Structure**: Better organized for users and contributors
 - **Enhanced CHANGELOG**: Added version comparison and upgrade guides
@@ -32,6 +35,7 @@ This is a **maintenance release** focusing on project organization and documenta
 ## 📊 File Organization
 
 ### Before v2.1.1
+
 ```
 Root: 25 files (messy!)
 ├── 10+ README files
@@ -41,6 +45,7 @@ Root: 25 files (messy!)
 ```
 
 ### After v2.1.1
+
 ```
 Root: 6 essential files (clean!)
 ├── README.md
@@ -65,11 +70,13 @@ docs/ (organized documentation)
 ## 🔧 Technical Details
 
 ### Package Info
+
 - **Version**: 2.1.1
 - **Package Size**: ~115 KB (optimized)
 - **Files**: 38 files (vs 50+ before)
 
 ### No Breaking Changes
+
 - ✅ All features work exactly as v2.0.0
 - ✅ All commands unchanged
 - ✅ All settings unchanged
@@ -80,18 +87,22 @@ docs/ (organized documentation)
 ## 📥 Installation
 
 ### Update from Marketplace
+
 If you have v2.0.0 installed, VS Code will auto-update, or:
+
 1. Go to Extensions
 2. Find "Multi-Language Lorem Ipsum Pro"
 3. Click Update
 
 ### Fresh Install
+
 1. Open VS Code
 2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (Mac)
 3. Search: **"Multi-Language Lorem Ipsum Pro"**
 4. Click Install
 
 ### Manual Install (VSIX)
+
 ```bash
 code --install-extension multi-language-lorem-with-categories-2.1.1.vsix
 ```
@@ -101,12 +112,14 @@ code --install-extension multi-language-lorem-with-categories-2.1.1.vsix
 ## 📖 Documentation
 
 ### Quick Access
+
 - 📖 [README](../README.md) - Main documentation
 - 🚀 [Quick Start](../docs/QUICK_START.md) - Get started in 2 minutes
 - 📁 [Project Structure](../docs/PROJECT_STRUCTURE.md) - Technical details
 - 📝 [CHANGELOG](../CHANGELOG.md) - All changes
 
 ### For Contributors
+
 - 🛠️ [Array Structure Guide](../docs/ARRAY_STRUCTURE_GUIDE.md) - Add languages
 - 📦 [How to Publish](../docs/HOW_TO_PUBLISH.md) - Publishing guide
 
@@ -130,6 +143,7 @@ In case you missed v2.0, here's what's included:
 ## 🔮 What's Next?
 
 ### v2.2 (Planned)
+
 - 🤖 AI-powered text generation
 - 📤 Export/import templates
 - 📋 Bulk generation
@@ -147,14 +161,14 @@ In case you missed v2.0, here's what's included:
 
 ## 📊 Quick Stats
 
-| Metric | v2.0.0 | v2.1.1 |
-|--------|--------|--------|
-| Root Files | 25 | 6 (-76%) |
+| Metric       | v2.0.0  | v2.1.1         |
+| ------------ | ------- | -------------- |
+| Root Files   | 25      | 6 (-76%)       |
 | Package Size | ~150 KB | ~115 KB (-23%) |
-| Languages | 17 | 17 |
-| Categories | 10 | 10 |
-| Commands | 25 | 25 |
-| Features | 15 | 15 |
+| Languages    | 17      | 17             |
+| Categories   | 10      | 10             |
+| Commands     | 25      | 25             |
+| Features     | 15      | 15             |
 
 ---
 
@@ -163,6 +177,7 @@ In case you missed v2.0, here's what's included:
 Thanks to everyone using the extension! Your feedback helps make it better.
 
 If you like the extension:
+
 - ⭐ Star the [GitHub repo](https://github.com/shahkochaki/multi-language-lorem-with-categories)
 - 📝 Write a review on [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=shahkochaki.multi-language-lorem-with-categories)
 - 🐛 Report bugs or suggest features
